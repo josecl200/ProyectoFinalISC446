@@ -1,0 +1,13 @@
+library(GPfit)
+dataGER<-read.csv("rdata/alemania.csv")
+dataGERMod<-dataGER
+esFirstDate<-as.Date("2020-01-28")
+dataGERMod$Casos<-NULL
+dataGERMod$Tipo_transmision<-as.numeric(dataGERMod$Tipo_transmision)
+dataGERMod$Dias_ultimo_infectado<-NULL
+dataGERMod$Pico<-NULL
+GERmodel<-GP_fit(dataGERMod,dataGER$Casos)
+print(GERmodel)
+predictGER<-read.csv("rdata/predictGER.csv")
+prediccionGER<-predict(GERmodel,predictGER)
+print(prediccionGER)

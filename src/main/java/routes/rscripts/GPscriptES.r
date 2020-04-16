@@ -1,0 +1,13 @@
+library(GPfit)
+dataES<-read.csv("rdata/españa.csv")
+dataESMod<-dataES
+esFirstDate<-as.Date("2020-02-01")
+dataESMod$Casos<-NULL
+dataESMod$Tipo_transmision<-as.numeric(dataESMod$Tipo_transmision)
+dataESMod$Dias_ultimo_infectado<-NULL
+dataESMod$Pico<-NULL
+ESmodel<-GP_fit(dataESMod,dataES$Casos)
+print(ESmodel)
+predictES<-read.csv("rdata/predictES.csv")
+prediccionES<-predict(ESmodel,predictES)
+print(prediccionES)

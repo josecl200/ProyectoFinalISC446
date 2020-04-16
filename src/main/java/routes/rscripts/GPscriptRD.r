@@ -1,0 +1,13 @@
+library(GPfit)
+dataRD<-read.csv("rdata/republica_dominicana.csv")
+dataRDMod<-dataRD
+rdFirstDate<-as.Date("2020-03-02")
+dataRDMod$Casos<-NULL
+dataRDMod$Tipo_transmision<-as.numeric(dataRDMod$Tipo_transmision)
+dataRDMod$Dias_ultimo_infectado<-NULL
+dataRDMod$Pico<-NULL
+GPmodel<-GP_fit(dataRDMod,dataRD$Casos)
+print(GPmodel)
+predictRD<-read.csv("rdata/predictRD.csv")
+prediccion<-predict(GPmodel,predictRD)
+print(prediccion)

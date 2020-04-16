@@ -1,0 +1,13 @@
+library(GPfit)
+dataCH<-read.csv("rdata/china.csv")
+dataCHMod<-dataCH
+cnFirstDate<-as.Date("2019-12-31")
+dataCHMod$Casos<-NULL
+dataCHMod$Tipo_transmision<-as.numeric(dataCHMod$Tipo_transmision)
+dataCHMod$Dias_ultimo_infectado<-NULL
+dataCHMod$Pico<-NULL
+CHmodel<-GP_fit(dataCHMod,dataCH$Casos)
+print(CHmodel)
+predictCH<-read.csv("rdata/predictCH.csv")
+prediccionCH<-predict(CHmodel,predictCH)
+print(prediccionCH)

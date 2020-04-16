@@ -1,0 +1,13 @@
+library(GPfit)
+dataIT<-read.csv("rdata/italia.csv")
+dataITMod<-dataIT
+itFirstDate<-as.Date("2020-01-21")
+dataITMod$Casos<-NULL
+dataITMod$Tipo_transmision<-as.numeric(dataITMod$Tipo_transmision)
+dataITMod$Dias_ultimo_infectado<-NULL
+dataITMod$Pico<-NULL
+ITmodel<-GP_fit(dataITMod,dataIT$Casos)
+print(ITmodel)
+predictIT<-read.csv("rdata/predictIT.csv")
+prediccionIT<-predict(ITmodel,predictIT)
+print(prediccionIT)
