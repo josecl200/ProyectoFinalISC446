@@ -3,6 +3,9 @@ plugins {
     id 'application'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
+application {
+    mainClassName='routes.Main'
+}
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -21,5 +24,8 @@ dependencies {
     compile 'org.freemarker:freemarker:2.3.26-incubating'
     compile 'com.google.code.gson:gson:2.8.5'
     compile "org.slf4j:slf4j-simple:1.7.21"
+    compile files('libs/jri/JRI.jar')
+    compile files('libs/jri/JRIEngine.jar')
+    compile files('libs/jri/REngine.jar')
 
 }
